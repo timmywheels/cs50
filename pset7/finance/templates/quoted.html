@@ -1,0 +1,21 @@
+{% extends "layout.html" %} {% block title %} Quotes {% endblock %} {% block main %}
+<h3 class="text-left">Quotes</h3>
+<table class="table text-left">
+    <thead>
+        <tr>
+            <th scope="col">Company</th>
+            <th scope="col">Price</th>
+            <th scope="col">Symbol</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for quote in quotes %}
+        <tr>
+            <td>{{ quote['name'] }}</td>
+            <td>{{ usd(quote['price']) }}</td>
+            <td>{{ quote['symbol'] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

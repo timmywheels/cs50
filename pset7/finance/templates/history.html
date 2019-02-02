@@ -1,0 +1,27 @@
+{% extends "layout.html" %} {% block title %} History {% endblock %} {% block main %}
+<h3 class="text-left">History</h3>
+<table class="table text-left">
+    <thead>
+        <tr>
+            <th scope="col">Symbol</th>
+            <th scope="col">Name</th>
+            <th scope="col">Shares</th>
+            <th scope="col">Price</th>
+            <th scope="col">Transaction Total</th>
+            <th scope="col">Buy / Sell</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for transaction in transactions %}
+        <tr class={{ "table-success" if transaction[ 'buy_sell']=="BUY" else "table-danger" }}>
+            <td>{{ transaction['symbol'] }}</td>
+            <td>{{ transaction['name'] }}</td>
+            <td>{{ transaction['shares'] }}</td>
+            <td>{{ transaction['price'] | usd }}</td>
+            <td>{{ transaction['transaction_total'] | usd }}</td>
+            <td>{{ transaction['buy_sell'] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "layout.html" %} {% block title %} Dashboard {% endblock %} {% block main %}
+<h3 class="text-left">Dashboard</h3>
+<table class="table text-left">
+    <thead>
+        <tr>
+            <th scope="col">Symbol</th>
+            <th scope="col">Name</th>
+            <th scope="col">Shares</th>
+            <th scope="col">Price</th>
+            <th scope="col">Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for stock in portfolio %}
+        <tr>
+            <td>{{ stock['symbol'] }}</td>
+            <td>{{ stock['name'] }}</td>
+            <td>{{ stock['shares'] }}</td>
+            <td>{{ stock['price'] }}</td>
+            <td>{{ stock['transaction_total'] }}</td>
+        </tr>
+        {% endfor %}
+        <tr class="table-success">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><strong>TOTAL: </strong></td>
+            <td><strong>{{ account_total }}</strong></td>
+        </tr>
+        <tr class="table-light">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><strong>CASH: </strong></td>
+            <td><strong>{{ cash_remaining }}</strong></td>
+        </tr>
+
+    </tbody>
+</table>
+{% endblock %}
